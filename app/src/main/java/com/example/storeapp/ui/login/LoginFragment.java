@@ -1,4 +1,4 @@
-package com.example.storeapp.ui.home;
+package com.example.storeapp.ui.login;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.storeapp.R;
 
-public class HomeFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private LoginViewModel loginViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        View root = inflater.inflate(R.layout.fragment_login, container, false);
+        final TextView textView = root.findViewById(R.id.text_login);
+        loginViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
