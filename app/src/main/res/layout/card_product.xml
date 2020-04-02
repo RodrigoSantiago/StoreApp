@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:onClick="onProductCardClick">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/card_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/product_test_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding">
+
+            <TextView
+                android:id="@+id/card_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="nome do produto em teste"
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/card_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R$ 250,00"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/card_par"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10x de R$ 250,00"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/card_promo_circle"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/promo_circle"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/card_promo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10%"
+            android:textAlignment="center"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

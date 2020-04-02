@@ -26,6 +26,11 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavController navController;
+
+    public static int selectedProduct;
+    public static int searchPage = 0;
+    public static int searchPages = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -52,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_orders)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
@@ -83,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             Drawable d;
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
-                // Set styles for expanded state here
                 if (getSupportActionBar() != null) {
                     setItemsVisibility(menu, item, false);
                     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
@@ -107,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setItemsVisibility(Menu menu, MenuItem exception, boolean visible) {
-        for (int i=0; i<menu.size(); ++i) {
+        for (int i = 0; i < menu.size(); ++i) {
             MenuItem item = menu.getItem(i);
             if (item.getItemId() == R.id.action_filter) item.setVisible(!visible);
             else if (item != exception) item.setVisible(visible);
@@ -116,8 +112,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void onProductCardClick(View view) {
+        Object tag = view.getTag();
+        if (tag instanceof Integer) {
+            selectedProduct = (int) view.getTag();
+            navController.navigate(R.id.nav_detail);
+        }
     }
 }

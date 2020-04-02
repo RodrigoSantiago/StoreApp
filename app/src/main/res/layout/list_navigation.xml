@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|center_horizontal"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btn_nav_prev"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginBottom="@dimen/padding"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/dw_button_circle"
+        android:drawableStart="@drawable/ic_prev"
+        android:paddingStart="4dp" />
+
+    <Button
+        android:id="@+id/btn_nav1"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="@dimen/padding"
+        android:background="@drawable/dw_button_circle"
+        android:text="1"
+        android:textColor="@android:color/primary_text_dark" />
+
+    <Button
+        android:id="@+id/btn_nav2"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="@dimen/padding"
+        android:background="@drawable/dw_button_circle"
+        android:text="2"
+        android:textColor="@android:color/primary_text_dark" />
+
+    <Button
+        android:id="@+id/btn_nav3"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="@dimen/padding"
+        android:background="@drawable/dw_button_circle"
+        android:text="3"
+        android:textColor="@android:color/primary_text_dark" />
+
+    <Button
+        android:id="@+id/btn_nav4"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="@dimen/padding"
+        android:background="@drawable/dw_button_circle"
+        android:text="4"
+        android:textColor="@android:color/primary_text_dark" />
+
+    <Button
+        android:id="@+id/btn_nav5"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="@dimen/padding"
+        android:background="@drawable/dw_button_circle"
+        android:text="5"
+        android:textColor="@android:color/primary_text_dark" />
+
+    <Button
+        android:id="@+id/btn_nav_next"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginBottom="@dimen/padding"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/dw_button_circle"
+        android:drawableStart="@drawable/ic_next"
+        android:paddingStart="4dp" />
+
+</LinearLayout>
