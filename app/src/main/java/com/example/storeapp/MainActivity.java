@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,10 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavController navController;
+    private TextView textCartItemCount;
 
     public static int selectedProduct;
     public static int searchPage = 0;
     public static int searchPages = 10;
+    public static int cartCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_products, R.id.nav_detail, R.id.nav_cart, R.id.nav_profile,
-                R.id.nav_login,  R.id.nav_signup,
-                R.id.nav_orders)
+                R.id.nav_login,  R.id.nav_signup, R.id.nav_orders)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -59,11 +61,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        if (searchMenuItem == null) {
-            return true;
-        }
 
+        //---------- SEARCH ------------//
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
 
@@ -99,6 +99,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //------------ CART --------------//
+        final MenuItem cartMenuItem = menu.findItem(R.id.action_cart);
+        final View cartView = cartMenuItem.getActionView();
+        textCartItemCount = cartView.findViewById(R.id.cart_badge);
+
+        setupBadge();
+
+        cartView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOptionsItemSelected(cartMenuItem);
+            }
+        });
+
         return true;
     }
 
@@ -108,6 +122,29 @@ public class MainActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.action_filter) item.setVisible(!visible);
             else if (item != exception) item.setVisible(visible);
         }
+    }
+
+    private void setupBadge() {
+        if (textCartItemCount != null) {
+            if (cartCount == 0) {
+                if (textCartItemCount.getVisibility() != View.GONE) {
+                    textCartItemCount.setVisibility(View.GONE);
+                }
+            } else {
+                textCartItemCount.setText(String.valueOf(Math.min(cartCount, 99)));
+                if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                    textCartItemCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_cart) {
+            navController.navigate(R.id.nav_cart);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

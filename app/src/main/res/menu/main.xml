@@ -11,9 +11,11 @@
         android:title="@string/action_filter"
         android:icon="@drawable/ic_filter"
         app:showAsAction="always"/>
+
     <item
         android:id="@+id/action_cart"
-        android:title="@string/action_cart"
         android:icon="@drawable/ic_cart"
+        android:title="@string/action_cart"
+        app:actionLayout="@layout/custom_action_item_layout"
         app:showAsAction="always"/>
 </menu>
