@@ -11,11 +11,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.storeapp.R;
+import com.example.storeapp.logic.data.Order;
+import com.example.storeapp.logic.data.Product;
+import com.example.storeapp.ui.OrderAdapter;
+import com.example.storeapp.ui.ProductAdapter;
+import com.example.storeapp.ui.home.HomeViewModel;
 
 public class OrdersFragment extends Fragment {
-
     private OrdersViewModel ordersViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -23,13 +30,15 @@ public class OrdersFragment extends Fragment {
         ordersViewModel = new ViewModelProvider(this).get(OrdersViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_orders, container, false);
-        final TextView textView = root.findViewById(R.id.text_orders);
-        ordersViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        final RecyclerView ordersView = root.findViewById(R.id.orders_view);
+        ordersView.setHasFixedSize(false);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        ordersView.setLayoutManager(layoutManager);
+
+        OrderAdapter mAdapter = new OrderAdapter(Order.test);
+        ordersView.setAdapter(mAdapter);
         return root;
     }
 }

@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:paddingBottom="32dp"
         tools:context=".ui.login.LoginFragment">
 
         <TextView
@@ -214,7 +215,7 @@
 
         <Button
             android:id="@+id/btn_login"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@style/AccentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -223,7 +224,7 @@
 
         <Button
             android:id="@+id/btn_login2"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            style="@style/AccentOutlineButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"

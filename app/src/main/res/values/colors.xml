@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimaryLight">#63B1FF</color>
     <color name="colorPrimary">#1976D2</color>
     <color name="colorPrimaryDark">#0D47A1</color>
+    <color name="colorAccentLight">#FF938B</color>
     <color name="colorAccent">#F44336</color>
+    <color name="colorAccentDark">#CF261A</color>
+
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorBackground">#EEEEEE</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="colorError">#F44336</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#212121</color>
+
     <color name="colorRipple">#80AAAAAA</color>
     <color name="colorPromo">#FFC107</color>
     <color name="colorNavButton">#D5D5D5</color>
+    <color name="chipText">#000</color>
+    <color name="chipTextSelected">#FFF</color>
+
+    <color name="colorRedStatus">#F44336</color>
+    <color name="colorYellowStatus">#FFC107</color>
+    <color name="colorGreenStatus">#4CAF50</color>
+    <color name="colorBlueStatus">#2196F3</color>
 </resources>

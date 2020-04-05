@@ -1,11 +1,9 @@
 package com.example.storeapp.ui;
 
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,7 +26,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public TextView cardPar;
         public LinearLayout cardPromoCircle;
         public TextView cardPromo;
-        public Button[] buttons;
+        public TextView[] buttons;
 
         public ViewHolder(View v, int type) {
             super(v);
@@ -43,7 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 cardPromoCircle = v.findViewById(R.id.card_promo_circle);
                 cardPromo = v.findViewById(R.id.card_promo);
             } else {
-                buttons = new Button[7];
+                buttons = new TextView[7];
                 buttons[0] = v.findViewById(R.id.btn_nav_prev);
                 buttons[1] = v.findViewById(R.id.btn_nav1);
                 buttons[2] = v.findViewById(R.id.btn_nav2);
@@ -59,6 +57,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private String title;
     private int pages;
     private int page;
+
+    private Drawable sDrawable;
 
     public ProductAdapter(String title, Product[] list, int pages, int page) {
         this.list = list;
@@ -109,7 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             holder.buttons[5].setVisibility(pages > 4 ? View.VISIBLE : View.GONE);
             holder.buttons[6].setVisibility(page < pages - 1 ? View.VISIBLE : View.GONE);
 
-            Drawable d = holder.view.getResources().getDrawable(R.drawable.dw_button_circle_act);
+            Drawable d = getSelectedDrawable(holder.view);
             if (pages <= 5) {
                 holder.buttons[1].setText("1");
                 holder.buttons[2].setText("2");
@@ -144,5 +144,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public int getItemCount() {
         return list.length + (pages > 1 ? 2 : 1);
+    }
+
+    private Drawable getSelectedDrawable(View view) {
+         if (sDrawable == null) {
+             sDrawable = view.getResources().getDrawable(R.drawable.dw_button_circle_act);
+         }
+         return sDrawable;
     }
 }

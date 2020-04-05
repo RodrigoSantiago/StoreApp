@@ -1,12 +1,12 @@
 package com.example.storeapp.logic.data;
 
+import com.example.storeapp.Helper;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 
 public class Product {
-
-    private static DecimalFormat formatter = new DecimalFormat("#,##0.00",new DecimalFormatSymbols());
 
     public static Product[] test = new Product[]{
             new Product(0, "Teste 001 de nome longuissimo para um produto com pouco espaço de texto", null, 0, 0, 1, 0),
@@ -62,14 +62,14 @@ public class Product {
 
     public String getPriceText() {
         if (priceText == null) {
-            priceText = "R$ " + formatter.format(price);
+            priceText = "R$ " + Helper.formatter.format(price);
         }
         return priceText;
     }
 
     public String getParText() {
         if (parText == null) {
-            parText = maxPar <= 0 ? ("") : (maxPar + "x de R$ " + formatter.format(pricePar / maxPar));
+            parText = maxPar <= 0 ? ("") : (maxPar + "x de R$ " + Helper.formatter.format(pricePar / maxPar));
         }
         return parText;
     }

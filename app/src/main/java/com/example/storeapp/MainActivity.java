@@ -1,5 +1,6 @@
 package com.example.storeapp;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -15,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -31,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView textCartItemCount;
 
     public static int selectedProduct;
-    public static int searchPage = 0;
+    public static int searchPage = 2;
     public static int searchPages = 10;
-    public static int cartCount = 0;
+    public static int cartCount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,8 +143,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_cart) {
-            navController.navigate(R.id.nav_cart);
+        switch (item.getItemId()) {
+            case R.id.action_cart:
+                navController.navigate(R.id.nav_cart);
+                break;
+            case R.id.action_filter:
+                onFilterClick();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -159,5 +166,9 @@ public class MainActivity extends AppCompatActivity {
             selectedProduct = (int) view.getTag();
             navController.navigate(R.id.nav_detail);
         }
+    }
+
+    public void onFilterClick() {
+        new FilterDialog().show(getSupportFragmentManager(), "tag");
     }
 }
